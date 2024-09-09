@@ -39,14 +39,13 @@ public interface BookRepo extends CrudRepository<Book, Long> {
 
     default Page<Book> getAllBy(BookQuery bookQuery) {
 
-        List<Book> books = getAllBy(
-                bookQuery.search(), bookQuery.getPageable()
-        );
+        // add '|' between words
+        String search = bookQuery.search().replaceAll(" ", " | ");
 
-        long total = countAllBy(bookQuery.search());
+        List<Book> books = getAllBy(search, bookQuery.getPageable());
 
-        return PageableExecutionUtils.getPage(
-                books, bookQuery.getPageable(), () -> total
-        );
+        long total = countAllBy(search);
+
+        return PageableExecutionUtils.getPage(books, bookQuery.getPageable(), () -> total);
     }
 }
