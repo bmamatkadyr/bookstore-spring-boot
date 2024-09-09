@@ -1,7 +1,11 @@
 spring:
   application:
     name: bookstore-spring-boot
-
+  datasource:
+    url: jdbc:postgresql://localhost:5551/my_db
+    username: minion
+    password: banana
+    driver-class-name: org.postgresql.Driver
 
 server:
   error:

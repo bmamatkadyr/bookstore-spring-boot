@@ -1,0 +1,11 @@
+services:
+  books_db:
+    image: postgres:16-bullseye
+    restart: always
+    container_name: books_db
+    ports:
+      - "5551:5432"
+    environment:
+      POSTGRES_USER: minion
+      POSTGRES_PASSWORD: banana
+      POSTGRES_DB: my_db

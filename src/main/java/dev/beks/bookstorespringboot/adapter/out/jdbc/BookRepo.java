@@ -21,7 +21,8 @@ public interface BookRepo extends CrudRepository<Book, Long> {
     @Query("""
             SELECT * 
             FROM books b
-            WHERE to_tsvector(b.title || ' ' || b.author || ' ' || b.description) @@ to_tsquery(:search)
+            WHERE :search = '' OR
+                  to_tsvector(b.title || ' ' || b.author || ' ' || b.description) @@ to_tsquery(:search)
             ORDER BY b.id DESC
             LIMIT :#{#pageable.pageSize} OFFSET :#{#pageable.offset}
             """)
@@ -30,7 +31,8 @@ public interface BookRepo extends CrudRepository<Book, Long> {
     @Query("""
             SELECT COUNT(*)
             FROM books b
-            WHERE to_tsvector(b.title || ' ' || b.author || ' ' || b.description) @@ to_tsquery(:search)
+            WHERE :search = '' OR
+                  to_tsvector(b.title || ' ' || b.author || ' ' || b.description) @@ to_tsquery(:search)
             """)
     long countAllBy(String search);
 
