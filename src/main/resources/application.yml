@@ -9,4 +9,4 @@ spring:
 
 server:
   error:
-    include-message: on_param
+    include-message: always
