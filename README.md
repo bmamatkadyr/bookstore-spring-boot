@@ -23,3 +23,6 @@ Response:
   ]
 }
 ```
+
+
+https://www.postgresqltutorial.com/postgresql-indexes/postgresql-full-text-search/
