@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: bookstore-spring-boot
+
+
+server:
+  error:
+    include-message: on_param
